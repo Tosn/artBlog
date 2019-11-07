@@ -2,6 +2,7 @@ module.exports = {
     title: 'Tosn',
     themeConfig: {
         sidebarDepth: 2,
+        lastUpdated: '更新时间', // string | boolean
         nav: [{
                 text: 'Vue',
                 items: [{
