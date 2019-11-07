@@ -7,7 +7,7 @@ module.exports = {
                 items: [{
                     text: 'VueCli',
                     link: '/vue/vueCli'
-                }, ]
+                }]
             },
             {
                 text: 'Javascript',
@@ -19,6 +19,10 @@ module.exports = {
             {
                 text: 'Node',
                 link: '/node/nodeBase'
+            },
+            {
+                text: 'GitHub',
+                link: 'https://github.com/Tosn/Tosn-Blog'
             }
         ],
         sidebar: {
