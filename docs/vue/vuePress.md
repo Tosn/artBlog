@@ -25,11 +25,12 @@
     会生成一个 id-rsa 和 id-rsa.pub 文件
     打开github > settings > SSH and GPG keys
     添加一个SSH key  new SSH Key
-    标题自定义  内容为之前生成id-rsa.pub的内容
+    标题自定义  key为之前生成id-rsa.pub的内容
     在运行之前的命令即可自动打包上传 
     */
     ```
 
 参考文献：
 1、[VuePress + github pages + Travis CI 教程](https://www.jianshu.com/p/a7435b8bc8bc)
+
 2、[windows下github 出现Permission denied (publickey).解决方法](https://www.cnblogs.com/eoooxy/p/6075625.html)
