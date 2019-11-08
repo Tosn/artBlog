@@ -29,3 +29,7 @@
     在运行之前的命令即可自动打包上传 
     */
     ```
+
+参考文献：
+1、[VuePress + github pages + Travis CI 教程](https://www.jianshu.com/p/a7435b8bc8bc)
+2、[windows下github 出现Permission denied (publickey).解决方法](https://www.cnblogs.com/eoooxy/p/6075625.html)
