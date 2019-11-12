@@ -21,8 +21,12 @@ module.exports = {
                 text: 'Javascript',
                 items: [
                     {
-                        text: 'ES6',
-                        link: '/javascript/ES6'
+                        text: '数组',
+                        link: '/javascript/Array'
+                    },
+                    {
+                        text: '对象',
+                        link: '/javascript/Object'
                     }
                 ]
             },
@@ -37,7 +41,7 @@ module.exports = {
         ],
         sidebar: {
             '/vue/': [['vueCli', 'vueCli'], ['vuePress', 'vuePress']],
-            '/javascript/': [['ES6', 'ES6']],
+            '/javascript/': [['Array', '数组'], ['Object', '对象']],
             '/node/': [['nodeBase', 'node基础'], ['koa', 'koa']]
         }
     }

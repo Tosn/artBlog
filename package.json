@@ -1,21 +1,24 @@
 {
-    "name": "Blog",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "directories": {
-        "doc": "docs"
-    },
-    "dependencies": {
-        "vuepress": "^1.2.0"
-    },
-    "devDependencies": {},
-    "scripts": {
-        "dev": "npx vuepress dev docs",
-        "build": "npx vuepress build docs",
-        "sh": "bash deploy.sh"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC"
+  "name": "Blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "vuepress": "^1.2.0"
+  },
+  "devDependencies": {
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0"
+  },
+  "scripts": {
+    "dev": "npx vuepress dev docs",
+    "build": "npx vuepress build docs",
+    "sh": "bash deploy.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
