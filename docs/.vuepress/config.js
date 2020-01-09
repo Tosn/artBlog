@@ -31,9 +31,13 @@ module.exports = {
             }
         ],
         sidebar: {
-            '/vue/': [['vueCli', 'vueCli'], ['vuePress', 'vuePress']],
+            '/vue/': [
+                ['vueCli', 'vueCli'],
+                ['vuePress', 'vuePress'],
+                ['vue插件', 'vuePlugins']
+            ],
             '/javascript/': [
-                ['clever', '巧用方法']
+                ['clever', '巧用方法'],
                 ['es6', 'Es6新增'],
                 ['Array', '数组'],
                 ['Object', '对象'],
