@@ -6,16 +6,7 @@ module.exports = {
         nav: [
             {
                 text: 'Vue',
-                items: [
-                    {
-                        text: 'VueCli',
-                        link: '/vue/vueCli'
-                    },
-                    {
-                        text: 'VuePress',
-                        link: '/vue/vuePress'
-                    }
-                ]
+                link: '/vue/vueCli'
             },
             {
                 text: 'Javascript',
@@ -34,7 +25,7 @@ module.exports = {
             '/vue/': [
                 ['vueCli', 'vueCli'],
                 ['vuePress', 'vuePress'],
-                ['vue插件', 'vuePlugins']
+                ['vuePlugins', 'vue插件']
             ],
             '/javascript/': [
                 ['clever', '巧用方法'],
