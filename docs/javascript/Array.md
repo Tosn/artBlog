@@ -27,6 +27,20 @@ Array.from(
 当使用thisArg的时候，mapFn不可以使用箭头函数，因为箭头函数 this的指向是window 而不是自身的this对象
 */
 ```
+```js
+// 利用Array.form 创建一个二维数组
+let array = Array.from(new Array(5).fill(1), (x, inx) => new Array(5).fill(x + inx))
+console.log(array)
+
+// 输出
+[
+  [ 1, 1, 1, 1, 1 ],
+  [ 2, 2, 2, 2, 2 ],
+  [ 3, 3, 3, 3, 3 ],
+  [ 4, 4, 4, 4, 4 ],
+  [ 5, 5, 5, 5, 5 ]
+]
+```
 
 ## Array.isArray()
 
