@@ -13,8 +13,16 @@ module.exports = {
           link: '/javascript/es6'
       },
       {
+        text: '算法',
+        link: '/algorithm/dp.md'
+      },
+      {
           text: 'Node',
           link: '/node/nodeBase'
+      },
+      {
+        text: '其他',
+        link: '/other/Ts'
       },
       {
           text: 'GitHub',
@@ -25,7 +33,8 @@ module.exports = {
       '/vue/': [
         ['vueCli', 'vueCli'],
         ['vuePress', 'vuePress'],
-        ['vuePlugins', 'vue插件']
+        ['vuePlugins', 'vue插件'],
+        ['vue3', 'vue3']
       ],
       '/javascript/': [
         ['clever', '巧用方法'],
@@ -34,6 +43,15 @@ module.exports = {
         ['Object', '对象'],
         ['BitOper', '位运算'],
         ['FileSaver', 'FileSaver']
+      ],
+      '/algorithm/': [
+        ['dp', '递归']
+      ],
+      '/other/': [
+        ['Ts', 'vue Ts'],
+        ['Lint', '代码规范'],
+        ['Project', '项目实战'],
+        ['Mongodb', 'Mongo']
       ],
       '/node/': [['nodeBase', 'node基础'], ['koa', 'koa']]
     }
