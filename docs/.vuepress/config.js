@@ -44,7 +44,10 @@ module.exports = {
         ["BitOper", "位运算"],
         ["FileSaver", "FileSaver"],
       ],
-      "/algorithm/": [["dp", "递归"]],
+      "/algorithm/": [
+        ["dp", "递归"],
+        ['linkList', '链表']
+      ],
       "/other/": [
         ["Ts", "vue Ts"],
         ["Lint", "代码规范"],
