@@ -14,7 +14,7 @@ module.exports = {
       },
       {
         text: "算法",
-        link: "/algorithm/dp.md",
+        link: "/algorithm/dp",
       },
       {
         text: "Node",
@@ -53,6 +53,7 @@ module.exports = {
         ["Lint", "代码规范"],
         ["Project", "项目实战"],
         ["Mongodb", "Mongo"],
+        ["Micro", "微前端"]
       ],
       "/node/": [["nodeBase", "node基础"], ["koa", "koa"]],
     },
