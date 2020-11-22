@@ -1,57 +1,57 @@
-## Vue3
-
-1、Reflect
-
-2、weakMap
-
-3、Set对象
-
-Set 和 Map主要应用场景在于数组去重 和 数据存储
-
-### Set
-
-方法：size add clear delete entries forEach keys values [@@iterator]
-
-Set.prototype.entries
-
-```js
-// 一个新的包含 [value, value] 形式的数组迭代器对象，value 是给定集合中的每个元素，迭代器 对象元素的顺序即集合对象中元素插入的顺序。
-var mySet = new Set();
-mySet.add("foobar");
-mySet.add(1);
-mySet.add("baz");
-
-var setIter = mySet.entries();
-
-console.log(setIter.next().value); // ["foobar", "foobar"]
-console.log(setIter.next().value); // [1, 1]
-console.log(setIter.next().value); // ["baz", "baz"]
+## vite创建项目
+```bash
+npm init vite-app <project-name>
 ```
 
+## 项目配置
+1、根目录新建vite.config.js（类似于vue.config.js）
 
 
-Set.prototype[@@iterator]()
-
+## 踩坑记录
+:::danger 注意事项：
+1、vue文件引用组件，使用动态按需引入会无效
 ```js
-const set1 = new Set();
-
-set1.add(42);
-set1.add('forty two');
-
-const iterator1 = set1[Symbol.iterator]();
-
-console.log(iterator1.next().value);
-// expected output: 42
-// { value: 42, done: false }
-
-console.log(iterator1.next().value);
-// expected output: "forty two"
-// { value: 'forty two', done: fase }
-
-console.log(iterator1.next())
-// { value: undefined, done: true }
+// wrong
+components: {
+  HelloWorld: () => import('@/components/HelloWorld')
+}
+// right
+import HelloWorld from '@/components/HelloWorld'
+components: {
+  HelloWorld
+}
 ```
+2、使用sass需要安装在开发插件上 
+```js
+// wrong
+npm install sass -S
+// right
+npm install sass -D
+```
+:::
 
+## vue3知识点
+### 全局配置
+```js
+// before
+Vue.prototype.$http = 'xxxx'
+// after
+import { createApp } from 'vue'
+import App from './App.vue'
+import './index.css'
+const app = createApp(App)
+app.config.globalProperties = {
+  userName: 'Tosn'
+}
+app.mount('#app')
 
-
- 
+// 如果全局设置参数较多，可以单独拉出一个appConfig.js文件
+// appConfig.js
+export const function (app) {
+  app.config.globalProperties = {...}
+}
+// main.js
+import appConfig from './appConfig'
+...
+appConfig(appp)
+```
