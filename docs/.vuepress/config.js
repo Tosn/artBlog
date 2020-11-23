@@ -17,6 +17,10 @@ module.exports = {
         link: '/javascript/es6',
       },
       {
+        text: "算法",
+        link: "/algorithm/dp",
+      },
+      {
         text: '算法',
         link: '/algorithm/dp.md',
       },
@@ -56,11 +60,12 @@ module.exports = {
         ['dp', '递归'],
         ['linkList', '链表']
       ],
-      '/other/': [
-        ['Ts', 'vue Ts'],
-        ['Lint', '代码规范'],
-        ['Project', '项目实战'],
-        ['Mongodb', 'Mongo'],
+      "/other/": [
+        ["Ts", "vue Ts"],
+        ["Lint", "代码规范"],
+        ["Project", "项目实战"],
+        ["Mongodb", "Mongo"],
+        ["Micro", "微前端"]
       ],
       '/node/': [['nodeBase', 'node基础'], ['koa', 'koa']],
     },

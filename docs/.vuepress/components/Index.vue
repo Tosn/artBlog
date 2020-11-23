@@ -48,11 +48,11 @@ export default {
           state: false,
           text: '读2本心理读物和2本技术书籍',
           desc: '自卑与超越阅读中'
-        },
+        }
       ]
-    };
-  },
-};
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

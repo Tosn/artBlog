@@ -69,3 +69,67 @@ import styles from './index.module.css'
 ```
 
 ## 组件
+
+## redux
+* createStore 创建 store
+* reducer 初始化、修改状态函数
+* getState 获取状态值
+* dispatch 提交更新
+* subscribe 变更订阅
+```js
+// 安装引入
+npm install redux --save
+
+// src/store/index.js
+import { createStore } from 'redux'
+
+function counterReducer (state = 0, action) {
+  switch (action.type) {
+    case 'ADD': 
+      return state + action.value 
+    case 'MINUS':
+      return state - 1
+    default:
+      return state
+  }
+}
+const store = createStore(counterReducer)
+
+export default store
+
+// 页面使用
+import React, { Component } from 'react';
+import store from './store'
+class App extends Component {
+  componentDidMount () {
+    // store变更 强制更新view
+    store.subscribe(() => {
+      this.forceUpdate()
+    })
+  }
+  render() {
+    return (
+      <div>
+        <h3>redux test</h3>
+        <p>{ store.getState() }</p>
+        <button onClick={() => store.dispatch({ type: 'ADD', value: 2 })}>add</button>
+      </div>
+    );
+  }
+}
+
+export default App;
+/**
+ * store.subscribe 也可以使用在 入口页面，src/index.js
+ * 全局监听store变化重新渲染视图
+ */
+ import store from './store'
+ store.subscribe(() => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+})
+```
