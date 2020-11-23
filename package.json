@@ -7,6 +7,9 @@
     "doc": "docs"
   },
   "dependencies": {
+    "-": "0.0.1",
+    "g": "^2.0.1",
+    "npm": "^6.14.9",
     "vuepress": "^1.2.0"
   },
   "devDependencies": {

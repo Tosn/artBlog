@@ -133,3 +133,88 @@ export default App;
   );
 })
 ```
+
+## react-router
+```js
+npm install react-router-dom --save
+
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <Link to="/">首页</Link>
+        <Link to="/user">个人中心</Link>
+        <Switch>
+          <Route exact path="/" 
+            // component={Home} 
+            render={() => {
+              return (
+                <div>render Comp</div>
+              )
+            }}
+            // children={() => {
+            //   return (
+            //     <div>Children comp</div>
+            //   )
+            // }}
+          />
+          <Route path="/user" component={User} />
+          <Route component={ErrorPage} />
+        </Switch>
+      </Router>
+    );
+  }
+}
+
+class Home extends React.Component {
+  render () {
+    return (
+      <h1>Home Page</h1>
+    )
+  }
+}
+
+class User extends React.Component {
+  render () {
+    return (
+      <h2>User Info</h2>
+    )
+  }
+}
+
+class ErrorPage extends React.Component {
+  render () {
+    return (
+      <h1>Error Page 404</h1>
+    )
+  }
+}
+
+export default App;
+```
+
+路由组件三种引入方式
+- component: component  location匹配时渲染
+- children: function  不管location是否匹配都会渲染，其他工作方式和render方法一致
+- render: function  location匹配时渲染
+
+优先级： children > component > render
+
+精确匹配：Link 加上 <code>exact</code>
+
+唯一匹配： Route外层加上 Switch
+
+## 生命周期
+
+react 16之前
+![生命周期](../images/react/react-16.png "react16生命周期")
+
+对比图
+
+旧：
+![生命周期](../images/react/react-16-life.jpeg "旧的生命周期")
+
+新:
+![生命周期](../images/react/react-17-life.png "新的生命周期")
