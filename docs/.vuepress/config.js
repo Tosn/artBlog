@@ -53,7 +53,8 @@ module.exports = {
         ["Lint", "代码规范"],
         ["Project", "项目实战"],
         ["Mongodb", "Mongo"],
-        ["Micro", "微前端"]
+        ["Micro", "微前端"],
+        ["WeChat", "微信"]
       ],
       "/node/": [["nodeBase", "node基础"], ["koa", "koa"]],
     },
