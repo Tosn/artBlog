@@ -209,7 +209,7 @@ export default App;
 ## 生命周期
 
 react 16之前
-![生命周期](../images/react/react-16.png "react16生命周期")
+![生命周期](../images/react/react-16.jpg "react16生命周期")
 
 对比图
 
@@ -218,3 +218,145 @@ react 16之前
 
 新:
 ![生命周期](../images/react/react-17-life.png "新的生命周期")
+
+V17可能会废弃的三个⽣命周期函数⽤getDerivedStateFromProps替代，⽬前使⽤的话加上UNSAFE_：
+- componentWillMount
+- componentWillReceiveProps
+- componentWillUpdate
+
+引⼊两个新的⽣命周期函数：
+- static getDerivedStateFromProps
+- getSnapshotBeforeUpdate
+
+如果不想⼿动给将要废弃的⽣命周期添加 UNSAFE_ 前缀，可以⽤下⾯的命令。
+```sh
+npx react-codemod rename-unsafe-lifecycles <path>
+```
+
+**新引⼊的两个⽣命周期函数**
+getDerivedStateFromProps
+```js
+static getDerivedStateFromProps(props, state)
+```
+<code>getDerivedStateFromProps</code> 会在调⽤ <code>render</code> ⽅法之前调⽤，并且在初始挂载及后续更新时都会被
+调⽤。它应返回⼀个对象来更新 state，如果返回 null 则不更新任何内容。
+
+请注意，不管原因是什么，都会在每次渲染前触发此⽅法。这与
+UNSAFE_componentWillReceiveProps 形成对⽐，后者仅在⽗组件重新渲染时触发，⽽不是在内部
+调⽤ setState 时。
+
+getSnapshotBeforeUpdate
+```js
+getSnapshotBeforeUpdate(prevProps, prevState)
+```
+在render之后，在componentDidUpdate之前。
+
+getSnapshotBeforeUpdate() 在最近⼀次渲染输出（提交到 DOM 节点）之前调⽤。它使得组件能
+在发⽣更改之前从 DOM 中捕获⼀些信息（例如，滚动位置）。此⽣命周期的任何返回值将作为参数传
+递给 componentDidUpdate(prevProps, prevState, snapshot)
+
+**验证⽣命周期**
+```js
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+/*
+V17可能会废弃的三个⽣命周期函数⽤getDerivedStateFromProps替代，⽬前使⽤的话加上
+UNSAFE_：
+- componentWillMount
+- componentWillReceiveProps
+- componentWillUpdate
+ */
+export default class LifeCyclePage extends Component {
+ static defaultProps = {
+ msg: "omg"
+ };
+ static propTypes = {
+ msg: PropTypes.string.isRequired
+ };
+ constructor(props) {
+ super(props);
+ this.state = {
+ count: 0,
+ };
+ console.log("constructor", this.state.count);
+ }
+ static getDerivedStateFromProps(props, state) {
+ // getDerivedStateFromProps 会在调⽤ render ⽅法之前调⽤，
+ //并且在初始挂载及后续更新时都会被调⽤。
+开课吧web全栈架构师
+ //它应返回⼀个对象来更新 state，如果返回 null 则不更新任何内容。
+ const { count } = state;
+ console.log("getDerivedStateFromProps", count);
+ return count < 5 ? null : { count: 0 };
+ }
+ //在render之后，在componentDidUpdate之前。
+ getSnapshotBeforeUpdate(prevProps, prevState, snapshot) {
+ const { count } = prevState;
+ console.log("getSnapshotBeforeUpdate", count);
+ return null;
+ }
+ /* UNSAFE_componentWillMount() {
+ //不推荐，将会被废弃
+ console.log("componentWillMount", this.state.count);
+ } */
+ componentDidMount() {
+ console.log("componentDidMount", this.state.count);
+ }
+ componentWillUnmount() {
+ //组件卸载之前
+ console.log("componentWillUnmount", this.state.count);
+ }
+ /* UNSAFE_componentWillUpdate() {
+ //不推荐，将会被废弃
+ console.log("componentWillUpdate", this.state.count);
+ } */
+ componentDidUpdate() {
+ console.log("componentDidUpdate", this.state.count);
+ }
+ shouldComponentUpdate(nextProps, nextState) {
+ const { count } = nextState;
+ console.log("shouldComponentUpdate", count, nextState.count);
+ return count !== 3;
+ }
+ setCount = () => {
+ this.setState({
+ count: this.state.count + 1,
+ });
+ };
+ render() {
+ const { count } = this.state;
+ console.log("render", this.state);
+ return (
+ <div>
+ <h1>我是LifeCycle⻚⾯</h1>
+ <p>{count}</p>
+开课吧web全栈架构师
+ <button onClick={this.setCount}>改变count</button>
+ {/* {!!(count % 2) && <Foo />} */}
+ <Child count={count} />
+ </div>
+ );
+ }
+}
+class Child extends Component {
+ UNSAFE_componentWillReceiveProps(nextProps) {
+ //不推荐，将会被废弃
+ // UNSAFE_componentWillReceiveProps() 会在已挂载的组件接收新的 props 之前被调⽤
+ console.log("Foo componentWillReceiveProps");
+ }
+ componentWillUnmount() {
+ //组件卸载之前
+ console.log(" Foo componentWillUnmount");
+ }
+ render() {
+ return (
+ <div
+ style={{ border: "solid 1px black", margin: "10px", padding: "10px" }}
+ >
+ 我是Foo组件
+ <div>Foo count: {this.props.count}</div>
+ </div>
+ );
+ }
+}
+```

@@ -1,3 +1,70 @@
+## 如何编写可执行的demo
+
+参考链接：[如何在vuepress中更好的编写代码示例](https://zhuanlan.zhihu.com/p/53716172)
+
+1. 安装插件
+npm i vuepress-plugin-demo-block
+2. 配置vuepress config
+```js
+module.exports = {
+  head: [
+    ['script', { src: 'https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js' }],
+    ['script', { src: 'https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js' }],
+    ['script', { src: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js' }],
+    ['script', { src: 'https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js' }],
+  ],
+  plugins: [
+    'demo-block'
+  ]
+}
+```
+3、如果要使用其他插件 如element-ui
+- .vuepress 下 新建enhanceApp.js
+```js
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+export default ({
+  Vue
+}) => {
+  Vue.use(ElementUI)
+}
+````
+<pre>
+ ::: demo
+  ```html
+    可执行的代码片
+  ```
+ :::
+</pre>
+
+::: demo 可执行demo
+```html
+<template>
+  <div>
+    <el-form>
+      <el-form-item>
+        <el-input v-model="message" />
+      </el-form-item>
+    <el-button @click="alertMessage">submit</el-button>
+  </div>
+</template>
+<script>
+export default {
+  data () {
+    return {
+      message: ''
+    }
+  },
+  methods: {
+    alertMessage () {
+      this.$alert(this.message)
+    }
+  }
+}
+</script>
+```
+:::
+
 ## 自动部署GitHub
 
 - 根目录新建一个sh可执行文件（deploy.sh）
