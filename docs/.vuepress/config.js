@@ -27,10 +27,6 @@ module.exports = {
         link: '/javascript/es6',
       },
       {
-        text: "算法",
-        link: "/algorithm/dp",
-      },
-      {
         text: '算法',
         link: '/algorithm/dp.md',
       },
