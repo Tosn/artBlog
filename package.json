@@ -16,7 +16,8 @@
   "devDependencies": {
     "cz-conventional-changelog": "^3.2.0",
     "node-sass": "^4.14.1",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^8.0.2",
+    "vuepress": "^1.7.1"
   },
   "scripts": {
     "dev": "npx vuepress dev docs",
