@@ -360,3 +360,95 @@ class Child extends Component {
  }
 }
 ```
+
+### Context
+[官方context](https://zh-hans.reactjs.org/docs/context.html)
+1. 创建context实例 ThemeContext = React.createContext('value')
+2. 组件中应用context(ThemeContext)，挂在需要往子组件传递的值value
+3. 子组件获取value
+   - class 组件， static contextType = ThemeContext(context实例), this.context即为context传递下来的值
+   - 函数式组件，使用useContext 获取context实例的值， const context = useContext(ThemeContext)
+```js
+import React, { Component, useContext } from 'react'
+const ThemeContext = React.createContext('dark')
+const Provider = ThemeContext.Provider
+
+class Child extends Component {
+  static contextType = ThemeContext
+  render() { 
+    return ( 
+      <div className={this.context}>child page
+        <div className="childBox">
+          { this.props.children }
+        </div>
+      </div>
+    );
+  }
+}
+
+function Fchild () {
+  const context = useContext(ThemeContext)
+  return (
+    <div className={context}>function context</div>
+  )
+}
+
+export default class HocPage extends Component {
+  render() {
+    return (
+      <div>
+        <Provider value="light">
+          <Child>
+            <Fchild></Fchild>
+          </Child>
+        </Provider>
+      </div>
+    )
+  }
+}
+
+```
+
+### 高阶组件
+函数式组件，接受一个组件，返回一个新的组件
+
+```js
+import React, { Component } from 'react'
+
+const Child = (props) => {
+  return <div>hello {props.name}</div>
+}
+
+const foo = Comp => props => {
+  return (
+    <div style={{border: "1px solid red", padding: "20px"}}>
+      <Comp {...props}></Comp>
+    </div>
+  )
+}
+
+const Foo = foo(foo(Child))
+
+// 装饰器用法 需要先安装插件及配置装饰器
+
+@foo
+class Child2 extends Component {
+  render() { 
+    return ( 
+      <div>Child 2 {this.props.name}</div>
+     );
+  }
+}
+
+
+export default class HocPage extends Component {
+  render() {
+    return (
+      <div>
+        <Foo name="Tosn"/>
+      </div>
+    )
+  }
+}
+
+```
