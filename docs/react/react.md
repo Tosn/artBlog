@@ -361,7 +361,7 @@ class Child extends Component {
 }
 ```
 
-### Context
+## Context
 [官方context](https://zh-hans.reactjs.org/docs/context.html)
 1. 创建context实例 ThemeContext = React.createContext('value')
 2. 组件中应用context(ThemeContext)，挂在需要往子组件传递的值value
@@ -409,7 +409,7 @@ export default class HocPage extends Component {
 
 ```
 
-### 高阶组件
+## 高阶组件
 函数式组件，接受一个组件，返回一个新的组件
 
 ```js
